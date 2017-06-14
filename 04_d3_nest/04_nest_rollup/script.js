@@ -1,31 +1,18 @@
-d3.csv('dataset.csv', function (error, data) {
+d3.csv('dataset.csv', (error, data) => {
     
-    var sumFemale = function(d){
-        return d3.sum(d, function(c){
-            return (c.Sex == 'F') ? 1 : 0;
-        })
-    }
+    var sumFemale = (d) => d3.sum(d, (c) => (c.Sex == 'F') ? 1 : 0 )
 
-    var sumMale = function(d){
-        return d3.sum(d, function(c){
-            return (c.Sex == 'M') ? 1 : 0;
-        })
-    }
+    var sumMale = (d) => d3.sum(d, (c) => (c.Sex == 'M') ? 1 : 0 )
 
     var mydata = d3.nest()
-        .key(function(d){
-            return d.Sport;
-        })
+        .key((d) => d.Sport)
         .sortKeys(d3.ascending)
-        .rollup(function(d){
-            return {
+        .rollup((d) => {
                 female: sumFemale(d),
                 male: sumMale(d),
                 athletes: d
-            }
         })
         .entries(data)
-    
     
     console.log(mydata)
     

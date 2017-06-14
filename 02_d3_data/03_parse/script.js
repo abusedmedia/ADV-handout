@@ -1,4 +1,4 @@
-d3.csv('dataset.csv', function(d, i){
+d3.csv('dataset.csv', (d, i) => {
     
     // you can fix your dataset in this function
     console.log(d, i)
@@ -15,7 +15,7 @@ d3.csv('dataset.csv', function(d, i){
     
     return d
     
-}, function (error, data) {
+},  (error, data) => {
     
     // here the dataset with the above fixes
     console.log(data)

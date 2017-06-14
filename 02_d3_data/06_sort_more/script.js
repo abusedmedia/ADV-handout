@@ -1,12 +1,7 @@
-d3.csv('dataset.csv', function(d, i){
-    
-    return d
-    
-}, function (error, data) {
-    
+d3.csv('dataset.csv', (d, i) => d,  (error, data) => {
     
     // sort by two different properties in array
-    data.sort(function(a, b){
+    data.sort((a, b) => {
         if(a.Age == b.Age){
             return d3.descending(a.Height, b.Height) 
         }

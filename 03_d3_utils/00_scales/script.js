@@ -12,14 +12,10 @@ svg.append('g')
   .enter()
   .append('rect')
   .attr('height', 9)
-  .attr('width', function (d, i) {
-    return sc(d)
-  })
-  .attr('y', function (d, i) {
-    return i * 10
-  })
+  .attr('width', (d, i) => sc(d) )
+  .attr('y', (d, i) => i * 10 )
 
-var sc2 = d3.scalePow().exponent(0.3) // v4
+var sc2 = d3.scalePow().exponent(0.3)
   .domain([0, data.length - 1])
   .range([0, 100])
 
@@ -30,12 +26,8 @@ svg.append('g')
   .enter()
   .append('rect')
   .attr('height', 9)
-  .attr('width', function (d, i) {
-    return sc2(d)
-  })
-  .attr('y', function (d, i) {
-    return i * 10
-  })
+  .attr('width', (d, i) => sc2(d) )
+  .attr('y', (d, i) => i * 10 )
 
 var sc3 = d3.scaleLog() // v4
   .domain([1, data.length])
@@ -48,9 +40,5 @@ svg.append('g')
   .enter()
   .append('rect')
   .attr('height', 9)
-  .attr('width', function (d, i) {
-    return sc3(d) * 100
-  })
-  .attr('y', function (d, i) {
-    return i * 10
-  })
+  .attr('width', (d, i) => sc3(d) * 100 )
+  .attr('y', (d, i) => i * 10 )

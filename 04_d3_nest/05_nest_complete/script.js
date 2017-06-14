@@ -1,25 +1,16 @@
-d3.csv('dataset.csv', function (data) {
+d3.csv('dataset.csv', (data) => {
 
     var svg = d3.select('svg')
 
-
     // creating 3 level of nesting
     dt = d3.nest()
-        .key(function (d) {
-            return d.Country
-        })
-        .key(function (d) {
-            return d.Age
-        })
-        .rollup(function (d) {
+        .key((d) => d.Country)
+        .key((d) => d.Age)
+        .rollup((d) => {
             return {
                 num: d.length,
-                male: d3.sum(d, function (c) {
-                    return (c.Sex == 'M') ? 1 : 0;
-                }),
-                female: d3.sum(d, function (c) {
-                    return (c.Sex == 'F') ? 1 : 0;
-                })
+                male: d3.sum(d, (c) => (c.Sex == 'M') ? 1 : 0 ),
+                female: d3.sum(d, (c) => (c.Sex == 'F') ? 1 : 0)
             }
         })
         .entries(data)
@@ -32,11 +23,11 @@ d3.csv('dataset.csv', function (data) {
         .data(dt)
         .enter()
         .append('g')
-        .attr('transform', function (d, i) {
+        .attr('transform', (d, i) => {
 
             dt.push(d.key);
 
-            return 'translate(0, ' + i * 50 + ')'
+            return `translate(0, ${i * 50})`
         })
 
     groups.append('rect')
@@ -47,14 +38,10 @@ d3.csv('dataset.csv', function (data) {
 
     // second level
     var ages = groups.selectAll('g')
-        .data(function (d) {
-            return d.values
-        })
+        .data((d) => d.values)
         .enter()
         .append('g')
-        .attr('transform', function (d, i) {
-            return 'translate(' + i * 20 + ', 0)'
-        })
+        .attr('transform', (d, i) => `translate(${i * 20}, 0)`)
 
     ages.append('rect')
         .attr('width', 19)
@@ -66,31 +53,23 @@ d3.csv('dataset.csv', function (data) {
     var female = ages.append('g')
 
     female.selectAll('circle')
-        .data(function (d) {
-            return d3.range(d.value.female) // v4, was .values in v3
-        })
+        .data((d) => d3.range(d.value.female))
         .enter()
         .append('circle')
         .attr('r', 2)
         .attr('cx', 5)
         .style('fill', '#999')
-        .attr('cy', function (d, i) {
-            return i * 3
-        })
+        .attr('cy', (d, i) => i * 3)
 
     var male = ages.append('g')
 
     male.selectAll('circle')
-        .data(function (d) {
-            return d3.range(d.value.male) // v4, was .values in v3
-        })
+        .data((d) => d3.range(d.value.male))
         .enter()
         .append('circle')
         .attr('r', 2)
         .style('fill', '#555')
         .attr('cx', 10)
-        .attr('cy', function (d, i) {
-            return i * 3
-        })
+        .attr('cy', (d, i) => i * 3)
 
 })

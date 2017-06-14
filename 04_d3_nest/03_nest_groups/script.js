@@ -1,7 +1,7 @@
-d3.csv('dataset.csv', function (error, data) {
+d3.csv('dataset.csv', (error, data) => {
     
     var res = d3.nest()
-		.key(function(d){
+		.key((d) => {
 			if( d.Age < 15 ){
 				return " - 15";
 			}else if( 15 <= d.Age && d.Age < 20 ){
@@ -16,12 +16,8 @@ d3.csv('dataset.csv', function (error, data) {
 				return "Unknown";
 			}
 		})
-		// sort the  keys
-		.sortKeys(d3.ascending)
-		// sort the values (leafs) by Age
-		.sortValues(function(a, b){
-			return (a.Age - b.Age)>0 ? -1 : 1;
-		})
+		.sortKeys(d3.ascending) // sort the  keys
+		.sortValues( (a, b) => (a.Age - b.Age)>0 ? -1 : 1 ) // sort the values (leafs) by Age
 		.entries(data)
     
     

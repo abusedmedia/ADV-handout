@@ -1,14 +1,12 @@
-d3.csv('dataset.csv', function(d, i){
+d3.csv('dataset.csv', (d, i) => {
     
     return d
     
-}, function (error, data) {
+},  (error, data) => {
     
     
     // sort by property in array
-    data.sort(function(a, b){
-        return d3.ascending(a.Age, b.Age);
-    })
+    data.sort( (a, b) => d3.ascending(a.Age, b.Age) )
     
     console.log(data)
     
