@@ -1,1 +1,3 @@
-# ADV-handout
+# Adventures in Data Visualization
+
+### Handout
