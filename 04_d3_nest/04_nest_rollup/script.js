@@ -8,9 +8,11 @@ d3.csv('dataset.csv', (error, data) => {
         .key((d) => d.Sport)
         .sortKeys(d3.ascending)
         .rollup((d) => {
+            return {
                 female: sumFemale(d),
                 male: sumMale(d),
                 athletes: d
+            }
         })
         .entries(data)
     
