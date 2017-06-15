@@ -1,6 +1,6 @@
 var svg = d3.select('svg')
 
-var arc = d3.arc() // v4, not in .svg namespace anymore
+var arc = d3.arc()
             .innerRadius(80)
             .outerRadius(130)
             .startAngle(Math.PI/4)

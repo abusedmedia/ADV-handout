@@ -5,10 +5,7 @@ var h = 600;
 var svg = d3.select('svg')
 
 
-// v4
-var data = d3.range(40).map(function(d){
-    return {a:Math.random(), b:Math.random(), c:Math.random(), d:Math.random()}
-})
+var data = d3.range(40).map((d) => {a:Math.random(), b:Math.random(), c:Math.random(), d:Math.random()} )
 
 console.log(data)
 
@@ -23,7 +20,7 @@ var mapy = d3.scaleLinear()
 
 // create the stack layout function
 var stack = d3.stack()
-            .keys(['a', 'b', 'c', 'd']) // v4
+            .keys(['a', 'b', 'c', 'd'])
             
 
 
@@ -34,15 +31,9 @@ console.log(newdata)
 
 // create the area path generator
 var area = d3.area()
-            .x(function(d, i){
-                return mapx(i);
-            })
-            .y0(function(d){
-                return 200-mapy(d[0]);
-            })
-            .y1(function(d){
-                return 200-mapy(d[1]);
-            })
+            .x((d, i) => mapx(i))
+            .y0((d) => 200-mapy(d[0]))
+            .y1((d) => 200-mapy(d[1]))
             .curve( d3.curveBasis )
             
 // some colors
@@ -54,12 +45,8 @@ var graph = svg.selectAll('path')
     .data(newdata)
     .enter()
     .append('path')
-    .attr('d', function(d){
-        return area(d)
-    })
-    .style('fill', function(d, i){
-        return cols(i)
-    })
+    .attr('d', (d) => area(d))
+    .style('fill', (d, i) => cols(i))
                 
     
     
@@ -71,15 +58,9 @@ function change(){
                 
     graph.transition()
         .duration(1000)
-        .delay(function(d,i){
-            return 800-i*200
-        })
-        .attr('d', function(d){
-            return area(d)
-        })
+        .delay((d,i) => 800-i*200)
+        .attr('d', (d) => area(d))
         
 }
-svg.on('click', function(){
-    change();
-});
+svg.on('click', change);
 

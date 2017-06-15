@@ -3,9 +3,7 @@ var svg = d3.select('svg');
 var width = 600;
 var height = 300;
 
-var data = d3.range(20).map(function(d){
-	return Math.random();
-});
+var data = d3.range(20).map((d) => Math.random());
 
 
 
@@ -13,9 +11,7 @@ var mapx = d3.scaleLinear()
 			.domain([0, data.length])
 			.range([0, width]);
 
-var extent = d3.extent(data, function(d){
-	return d;
-});
+var extent = d3.extent(data, (d) => d);
 
 var mapy = d3.scaleLinear()
 			.domain(extent)
@@ -29,7 +25,7 @@ var myArea = d3.area()
 				return mapy(d);
 			})
 			.y0(height)
-            .curve(d3.curveCatmullRom.alpha(0.5)) // v4
+            .curve(d3.curveCatmullRom.alpha(0.5))
 
 svg.append('path')
 	.attr('d', myArea(data))

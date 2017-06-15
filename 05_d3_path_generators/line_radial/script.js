@@ -1,7 +1,5 @@
 
-var data = d3.range(0, 150, 5).map(function(i){
-	return i;
-})
+var data = d3.range(0, 150, 5).map((i) => i)
 
 var mapRadius = d3.scaleLinear()
 	.domain([0, d3.max(data)])
@@ -11,9 +9,9 @@ var mapAngle  = d3.scaleLinear()
 	.domain([0, data.length])
 	.range([0, Math.PI*10])
 			    
-var radial = d3.radialLine() // v4
-    .radius(function(d,i) { return mapRadius(d); })
-    .angle(function(d,i) { return mapAngle(i); })
+var radial = d3.radialLine()
+    .radius((d,i) => mapRadius(d))
+    .angle((d,i) => mapAngle(i))
 	.curve( d3.curveBasis )
 
 			    

@@ -7,7 +7,7 @@ var data_selector = [{id:1, label:"Label 1", color:'#000'},
 
 d3.select('body')
 		.select('#selector')
-		.on('change', function(){
+		.on('change', () => {
 			// trig some action here
 			console.log(this.value);
 
@@ -18,12 +18,8 @@ d3.select('body')
 		.data(data_selector)
 		.enter()
 		.append('option')
-		.attr('value', function(d){
-			return d.color;
-		})
-		.text(function(d){
-			return d.label
-		});
+		.attr('value', (d) => d.color)
+		.text((d) => d.label)
 
 
 
@@ -31,7 +27,7 @@ d3.select('body')
 // listen for button click, will add a new element
 d3.select('body')
 	.select('#btn')
-	.on('click', function(){
+	.on('click', () => {
 		// trig some action here
 		console.log('clicked me');
 

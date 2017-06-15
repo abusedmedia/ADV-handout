@@ -13,18 +13,14 @@ function updateViz(){
     elements.enter()
         .append('circle')
         .attr('r', 0)
-        .attr('cx', function(d, i){
-            return i*20;
-        })
+        .attr('cx', (d, i) => i*20)
         .attr('cy', 50)
 
 
     // the element update logic
     elements.transition()
         .duration(1000)
-        .attr('r', function(d, i){
-            return d;
-        })
+        .attr('r', (d, i) => d)
 
 
     // the element remove logic
@@ -34,7 +30,7 @@ function updateViz(){
 
 
 
-setInterval(function(){
+setInterval(() => {
 
     data.push( Math.random()*10 )
     console.log(data);

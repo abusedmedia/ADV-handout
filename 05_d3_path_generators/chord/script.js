@@ -8,7 +8,6 @@ d3.select('svg').append('g')
 	.attr('transform', 'translate(300,300)')
 	.append('path')
 	.datum(data)
-	//.attr('d', d3.svg.chord().radius(150)) // v3
-	.attr('d', d3.ribbon().radius(150)) // v4, need to import the microlib
+	.attr('d', d3.ribbon().radius(150))
 	.style('fill', 'orange')
 	.style('stroke', '#f00')

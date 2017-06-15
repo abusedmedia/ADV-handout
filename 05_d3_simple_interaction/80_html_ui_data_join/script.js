@@ -13,12 +13,8 @@ d3.select('body')
 		.enter()
 		.append('input')
 		.attr('type', 'button')
-		.attr('value', function(d){
-			return d.label;
-		})
-		
-		.on('click', function(d){
-
+		.attr('value', (d) => d.label)
+		.on('click', (d) =>{
 			// note I'm using 'd' instead 'this' used in previous example
 			changeStatus(d);
 		})

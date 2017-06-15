@@ -4,24 +4,16 @@ var svg = d3.select('svg')
 
 
 
-var data = d3.range(5).map(function(d, i){
-	return {key:i+"", value:Math.random()};
-});
+var data = d3.range(5).map((d, i) => {key:i+"", value:Math.random()});
 
 
 var arc = d3.arc()
-			.innerRadius(function(d, i){
-				return i*2+10;
-			})
-			.outerRadius(function(d, i){
-				return i*10+50;
-			})
+			.innerRadius((d, i) => i*2+10)
+			.outerRadius((d, i) => i*10+50)
 			
 			
 var pie = d3.pie()
-			.value(function(d){
-				return d.value;
-			});
+			.value((d) => d.value);
 			
 
 
@@ -43,19 +35,15 @@ function update(){
 		.enter()
 		.append('path')
 		.attr('d', arc)
-		.style('fill', function(d, i){
-			return cols(i)
-		})
+		.style('fill', (d, i) => cols(i))
 
 }
 
 update();
 
-svg.on('click', function(){
+svg.on('click', () => {
 
-	var data = d3.range(5).map(function(d, i){
-		return {key:i+"", value:Math.random()};
-	});
+	var data = d3.range(5).map((d, i) => {key:i+"", value:Math.random()});
 
 	svg.selectAll('path')
 		.data(pie(data))

@@ -1,5 +1,3 @@
-
-
 var w = 600;
 var h = 600;
 		
@@ -9,9 +7,7 @@ var svg = d3.select('svg')
 			.attr('height', h)
 
 
-
-
-var crd = d3.ribbon()	 // v4, import lib
+var crd = d3.ribbon()
 		.radius(150)
 
 
@@ -41,20 +37,16 @@ for(var i=0; i<10; ++i){
 
 
 
-var cols = d3.scaleOrdinal( d3.schemeCategory20 ) // v4
+var cols = d3.scaleOrdinal( d3.schemeCategory20 )
 
 var g = svg.append('g')
 	.attr('transform', 'translate(300,300)')
 	.selectAll('path')
-	.data(data, function(d){
-		return d.key
-	})
+	.data(data, (d) => d.key)
 	.enter()
 	.append('path')
 	.attr('d', crd)
-	.style('fill', function(d, i){
-		return cols(i)
-	})
+	.style('fill', (d, i) => cols(i))
 	.style('stroke', 'none')	
 
 
