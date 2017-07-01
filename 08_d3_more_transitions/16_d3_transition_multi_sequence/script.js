@@ -8,37 +8,27 @@ var circles = svg.selectAll('g')
 	.data(data)
 	.enter()
 		.append('g')
-		.attr('transform', function(d, i){
-            return 'translate(' + i*20+', 0)'
-        })
+		.attr('transform', (d, i) => `translate(${i*20}, 0)`)
 
 
 		
 circles.append('circle')		
 		// initial properties
-		.attr('cx', function(d){
-			return d*10;
-		})
-		.attr('id', function(d, i){
-			return 'c'+i
-		})
+		.attr('cx', (d) => d*10)
+		.attr('id', (d, i) => 'c'+i)
 		.attr('cy', 50)
 		.attr('r', 10)
 		
 		// first transition
         .transition()
         // delay works only in the first transition call when using sequenced transition
-        .delay(function(d, i){
-        	return i*1000
-        })
+        .delay((d, i) => i*1000)
         .attr('r', 5)
         .on('end', endTransition)
 		
 		// second transition, sequenced
         .transition()
-		.attr('cx', function(d){
-		    return d*10+50
-		})
+		.attr('cx', (d) => d*10+50)
         .on('end', endTransition)
 		
 		
@@ -49,9 +39,7 @@ circles.append('circle')
 		
 		// fourth transition, sequenced
 		.transition()
-		.attr('cx', function(d){
-		    return d*10
-		})
+		.attr('cx', (d) => d*10)
         .on('end', finalTransition)
 		
 		

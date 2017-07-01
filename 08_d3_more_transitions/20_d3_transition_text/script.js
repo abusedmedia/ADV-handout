@@ -9,11 +9,11 @@ console.log(t)
 t.text('The value is: 0')
   .transition()
   .duration(3000)
-  .tween('text', function(){
+  .tween('text', () => {
     var that = d3.select(this)
 	var i = d3.interpolate(that.text(), 'The value is: 100')
 	
-	return function(t){
+	return (t) => {
 		that.text( i(t) ) 
 	}
 })

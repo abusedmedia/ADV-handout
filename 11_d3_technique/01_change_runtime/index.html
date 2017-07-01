@@ -1,0 +1,31 @@
+<html>
+
+    <head>
+        
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        
+    </head>
+
+    <body>
+        
+        <svg viewBox="0 0 200 100">
+		
+            <defs>
+                <clipPath id="mask">
+                    <circle r="20" cx="100" cy="70"></circle>
+                </clipPath>
+            </defs>
+
+            <rect stroke="#ccc" fill="none" width="110" height="80"></rect>
+            <rect fill="orange" width="110" height="80" style="clip-path:url(#mask)"></rect>
+
+        </svg>
+
+        
+        <script src="../../d3.min.js"></script>
+        
+        <script src="script.js"></script>
+    
+    </body>
+
+</html>

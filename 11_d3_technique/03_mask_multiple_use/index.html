@@ -1,0 +1,47 @@
+<html>
+
+    <head>
+        
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        
+    </head>
+
+    <body>
+        
+        <svg viewBox="0 0 200 100">
+
+            <defs>
+
+                <clipPath id="myMask">
+                    <circle r="20" cx="100" cy="70">
+                      <animate
+                                attributeName="r"
+                                attributeType="XML"
+                                from="0" to="20"
+                                begin="0s" dur="3s"
+                                fill="freeze"
+                                repeatCount="indefinite"/>
+
+                    </circle>
+                    <circle r="10" cx="30" cy="50"></circle>
+                </clipPath>
+
+            </defs>
+
+
+            <rect stroke="#ccc" fill="white" width="110" height="80"></rect>
+            <rect fill="orange" width="110" height="80" style="clip-path:url(#myMask)"></rect>
+
+            <rect stroke="#ddd" x="113" fill="white" width="110" height="80"></rect>
+            <rect fill="purple" x="113" width="110" height="80" style="clip-path:url(#myMask)"></rect>
+
+        </svg>
+
+        
+        <script src="../../d3.min.js"></script>
+        
+        <script src="script.js"></script>
+    
+    </body>
+
+</html>

@@ -27,8 +27,6 @@ d3.select('svg').append('g')
 	.enter()
 	.append('path')
 	.attr('d', crd)
-	.style('fill', function(d, i){
-		return cols(i)
-	})
+	.style('fill', (d, i) => cols(i))
 	.style('stroke', 'none')
 

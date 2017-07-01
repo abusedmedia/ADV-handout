@@ -8,7 +8,6 @@ layer = svg.append('g')
 				.attr('transform', 'translate(45,50)')
 
 
-
 var transitObj = layer.append('circle')
 			.attr('r', 20)
 			.style('fill', 'orange')
@@ -30,13 +29,13 @@ function chainTransition()
 		.duration(2000)
 		.attr('r', 100)
 		.attr('cx', 100)
-		.on('end', function(){
+		.on('end', () => {
 			d3.select(this)
 				.transition()
 				.duration(1000)
 				.ease(d3.easeBounceInOut)
 				.attr('cx', 200)
-				.on('end', function(){
+				.on('end', () => {
 					d3.select(this)
 						.transition()
 						.duration(1000)

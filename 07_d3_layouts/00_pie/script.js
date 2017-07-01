@@ -1,21 +1,17 @@
 var svg = d3.select('svg');
 
-var data = d3.range(6).map(function(d){
-	return Math.random()*20
-});
+var data = d3.range(6).map((d) => Math.random()*20)
 
 var mypie = d3.pie()
-				.value(function(d){
-					return d;
-				})
+				.value((d) => d)
                 .sort(null)
 
 // check the new data source
-console.log(mypie(data));
+console.log(mypie(data))
 
 var mypiearc = d3.arc()
 				.innerRadius(30)
-				.outerRadius(100);
+				.outerRadius(100)
 
 
 var colors = d3.scaleOrdinal( d3.schemeCategory20 )
@@ -27,6 +23,4 @@ svg.append('g')
 	.enter()
     .append('path')
     .attr('d', mypiearc)
-    .style('fill', function(d, i){
-        return colors(i)
-    });
+    .style('fill', (d, i) => colors(i))

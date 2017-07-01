@@ -15,11 +15,7 @@ layer.append('rect')
 // create a dataset, an array of arrays
 function createDataset()
 {
-	var dd = d3.range(3).map(function(){
-		return d3.range(10).map(function(){
-			return Math.random();
-		})
-	})
+	var dd = d3.range(3).map( () => d3.range(10).map( () => Math.random() ) )
 	return dd;
 }
 data = createDataset();
@@ -36,25 +32,20 @@ var area_mapy = d3.scaleLinear()
 			.range([0, heightGraph])
     
 var area = d3.area()
-    .x(function(d,i) { return area_mapx(i); })
-    .y1(function(d) { return area_mapy(d); })
+    .x((d,i) => area_mapx(i) )
+    .y1((d) => area_mapy(d) )
     .y0(heightGraph)
     .curve(d3.curveBasis)
     
     
-// d3 helpful object to create a color category range
 var col_scale = d3.scaleOrdinal(d3.schemeCategory10);
 
 var areas = layer.selectAll('path')
 		.data(data)
 		.enter()
 			.append('path')
-			.attr("d", function(d){
-				return area(d);
-			})
-			.style('fill', function(d,i){
-				return col_scale(i)
-			})
+			.attr("d", (d) => area(d))
+			.style('fill', (d,i) => col_scale(i))
 			.style('opacity', .9)
 
 
@@ -67,8 +58,6 @@ layer.on('click', function(){
 	.transition()
 	    .duration(1000)
 	    .ease(d3.easeExpInOut)
-	    .attr("d", function(d){
-	    	return area(d);
-	    })
+	    .attr("d", (d) => area(d))
 	
 });

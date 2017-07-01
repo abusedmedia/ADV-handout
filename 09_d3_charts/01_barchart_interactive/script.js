@@ -24,10 +24,9 @@ var objects = layer.selectAll('g')
 var entered = objects.enter()
     .append('g')
 
-var all = objects.merge(entered)
 
 // append the rect
-all.append('rect')
+entered.append('rect')
 		.attr('x', function(d, i){
 			return i*80;
 		})		
@@ -40,7 +39,7 @@ all.append('rect')
 		})
 		
 // append a text
-all.append('text')
+entered.append('text')
 		.text(function(d){
 			return d.label;
 		})
@@ -50,7 +49,7 @@ all.append('text')
 		.attr('opacity', 0)
 		
 // interaction
-all.on('mouseover', function(d,i){
+entered.on('mouseover', function(d,i){
 			d3.select(this)
 				.select('rect')
 				.transition()

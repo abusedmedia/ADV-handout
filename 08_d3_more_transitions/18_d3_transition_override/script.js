@@ -11,9 +11,7 @@ var svg = d3.select('svg')
 
 	
 // create a dataset
-var data = d3.range(20).map(function(d){
-	return Math.random()
-})
+var data = d3.range(20).map((d) => Math.random())
 
 // the x mapper
 var mapx = d3.scaleLinear()
@@ -34,16 +32,10 @@ circles.enter()
 	.append('circle')
 	.attr('r', 0) // initial radius
 	.transition()
-	.delay(function(d, i){
-		return i*300
-	})
+	.delay((d, i) => i*300)
 	.attr('r', 10) // final radius
-	.attr('cx', function(d, i){
-		return mapx(i)
-	})
-	.attr('cy', function(d, i){
-		return mapy(d)
-	})
+	.attr('cx', (d, i) => mapx(i))
+	.attr('cy', (d, i) => mapy(d))
 	.style('fill', 'orange')
 
 
@@ -53,7 +45,7 @@ circles.enter()
 // here we define the new transition
 d3.select('body')
 	.select('#btn')
-	.on('click', function(){
+	.on('click', () => {
         
         // v4, selections are immutable
         var circles = svg.selectAll('circle')
@@ -64,12 +56,8 @@ d3.select('body')
 		circles.transition()
 			.duration(500) 
 			.attr('r', 10)
-			.attr('cx', function(d, i){
-				return mapx(i)
-			})
-			.attr('cy', function(d, i){
-				return mapy(d)
-			})
+			.attr('cx', (d, i) => mapx(i))
+			.attr('cy', (d, i) mapy(d))
 			.style('fill', 'orange')
 
 	})

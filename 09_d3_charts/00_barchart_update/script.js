@@ -8,9 +8,7 @@ svg.append('g')
 	.attr('transform', 'translate(10,10)')
 
 
-var mydataset = d3.range(10).map(function(){
-    return Math.random();
-})
+var mydataset = d3.range(10).map(() => Math.random())
 
 var bar_mapx = d3.scaleLinear()
 			.domain([0, mydataset.length])
@@ -23,9 +21,7 @@ var bar_mapy = d3.scaleLinear()
 
 
 svg.on('click', function(){
-	var newdata = d3.range(10).map(function(){
-		return Math.random();
-	})
+	var newdata = d3.range(10).map(() => Math.random())
     console.log(newdata)
     drawChart(newdata)    
 });
@@ -40,9 +36,7 @@ function drawChart(data){
 
     objects.enter()
 		.append('rect')
-		.attr('x', function(d, i){
-			return bar_mapx(i)
-		})
+		.attr('x', (d, i) => bar_mapx(i))
 		.attr('y', heightGraph)
 		.attr('height', 0.1)
 		.attr('width', widthGraph/data.length-1)
@@ -51,15 +45,9 @@ function drawChart(data){
 	
 	objects.transition()
 	    .duration(2000)
-        .delay(function(d, i){
-            return 100*i
-        })
-	    .attr('height', function(d){
-	    	return bar_mapy(d);
-	    })
-	    .attr('y', function(d){
-	    	return heightGraph-bar_mapy(d);
-	    })
+        .delay((d, i) => 100*i)
+	    .attr('height', (d) => bar_mapy(d))
+	    .attr('y', (d) => heightGraph-bar_mapy(d))
     
 }
 
