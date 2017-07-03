@@ -12,7 +12,6 @@ var svg = d3.select('svg')
 var proj = d3.geoMercator()
 			.scale( (600 + 1) / 2 / Math.PI )
 			.translate( [600 / 2, 600 / 2] )
-			.precision(.1)
 			
 				
 
@@ -27,8 +26,7 @@ var path = d3.geoPath()
 			
 	
 // the feature Point
-var point = {type:"Point"}
-point.coordinates = [0,0]
+var point = {type:"Point", coordinates:[0,0]}
 
 svg.append('path')
 	.datum(point)

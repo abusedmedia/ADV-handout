@@ -12,8 +12,8 @@ var svg = d3.select('svg')
 // orthographic
 // stereographic 
 // equirectangular
-var proj = d3.geoStereographic()
-			.scale( 70 )
+var proj = d3.geoAlbersUsa()
+			.scale( 800 )
 			.translate( [w / 2, h / 2] )
 			
 			
@@ -28,7 +28,7 @@ var path = d3.geoPath()
 
 
 // load the geoJSON US description file and display it 
-d3.json('us.geo.json', map => {
+d3.json('../../datasets/geojson/us.geo.json', map => {
 	
 	// http://www.geojson.org/geojson-spec.html
 	

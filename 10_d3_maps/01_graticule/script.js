@@ -8,11 +8,11 @@ var svg = d3.select('svg')
 			.attr('height', h)
 
 // create the projection system, try one of the follow:
-// mercator
-// orthographic
-// stereographic 
-// equirectangular
-var proj = d3.geoEquirectangular()
+// Mercator
+// Orthographic
+// Stereographic 
+// Equirectangular
+var proj = d3.geoMercator()
 			.scale( (w + 1) / 2 / Math.PI ) // view all based on svg width 
 			.translate( [w / 2, h / 2] ) // center the viewport
 			
@@ -27,11 +27,8 @@ var path = d3.geoPath()
 // create the built in graticule
 var graticule = d3.geoGraticule();
 
-console.log(graticule())
-
 // draw the graticule
 svg.append('path')
-	.datum(graticule)
-	.attr('d', path)
+	.attr('d', path(graticule()))
     .style("fill", "none")
     .style("stroke", "#999")

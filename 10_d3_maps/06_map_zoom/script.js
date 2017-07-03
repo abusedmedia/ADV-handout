@@ -20,7 +20,7 @@ var path = d3.geoPath()
 
 
 // load a geojson us map and display it
-d3.json('us.geo.json', map => {
+d3.json('../../datasets/geojson/us.geo.json', map => {
 
     console.log(map)
     // you can see now we are draw separate paths, one for each feature
@@ -56,13 +56,11 @@ d3.json('us.geo.json', map => {
         }
 
         myMap.selectAll("path")
-            .classed("active", centered && function (d) {
-                return d === centered;
-            });
+            .classed("active", (d) => d === centered);
 
         myMap.transition()
             .duration(750)
-            .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+            .attr("transform", `translate(${w / 2},${h / 2}) scale(${k}) translate(${-x},${-y})`)
             .style("stroke-width", 1.5 / k + "px");
     }
 

@@ -28,10 +28,10 @@ var path = d3.geoPath()
 		
 
 // load the geoJSON US description file and display it 
-d3.json('oceans.geo.json', map => {
+d3.json('../../datasets/geojson/oceans.geo.json', map1 => {
 	
 	svg.selectAll('.ocean')
-		.data(map.features)
+		.data(map1.features)
 		.enter()
 		.append('path')
 		.attr('class', 'ocean')
@@ -42,7 +42,7 @@ d3.json('oceans.geo.json', map => {
 
 
 
-	d3.json('cities.geo.json', map2 => {
+	d3.json('../../datasets/geojson/cities.geo.json', map2 => {
 	
         svg.selectAll('.cities')
             .data(map2.features)

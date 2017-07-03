@@ -27,7 +27,7 @@ var path = d3.geoPath()
 			
 	
 // load a topojson world map and display it
-d3.json('us.topo.json', map => {
+d3.json('../../datasets/topojson/us.topo.json', map => {
 
 	console.log(map);
 
