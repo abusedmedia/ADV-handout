@@ -4,7 +4,9 @@
 var svg = d3.select('svg')
 
 // create the node dataset
-var data_nodes = d3.range(20).map((d) => { amount:2 + Math.random() * 20 })
+var data_nodes = d3.range(20).map((d) => { 
+    return {amount:2 + Math.random() * 20}
+})
 
 // create the links dataset
 var data_links = []
@@ -12,16 +14,18 @@ for (var i = 0; i < 100; i++) {
   var s = parseInt(Math.random() * data_nodes.length)
   var t = parseInt(Math.random() * data_nodes.length)
   if (s != t) data_links.push({target: t, source: s})
-};
+}
+
 
 // create the layout
 var simulation = d3.forceSimulation(data_nodes)
             .force('link', d3.forceLink(data_links).distance(50).strength(0.01))
             .force('charge', d3.forceManyBody())
             .force('center', d3.forceCenter(300, 300))
-            // .force('x', d3.forceX())
-            // .force('y', d3.forceY())
+            //.force('x', d3.forceX())
+            //.force('y', d3.forceY())
 			.on('tick', tick)
+
 
 var links = svg.selectAll('line')
 			.data(data_links)
