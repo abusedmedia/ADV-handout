@@ -1,9 +1,4 @@
-d3.csv('dataset.csv', (error, data) => {
-    
-    // check whether there's an error while loading the file
-  if (error) console.log(error.responseText)
-
-    // otherwise do something with it
-  console.log(data)
-    
-})
+d3.csv('dataset.csv')
+    .then(data => {
+      console.log(data)
+    })

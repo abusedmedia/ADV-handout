@@ -7,18 +7,24 @@ var data = d3.range(5).map( (d, i) => {
 })
 
 
+var gg = {gg:data}
+
+
 var cols = d3.scaleOrdinal(d3.schemeCategory10)
 
 
-var svg = d3.select('svg')
+var svg = d3.select('svg').datum(gg)
 
 // we use this technique to move each group based on the amount of elements in itself
 var currenty = 0
+
 var groups = svg.selectAll('g')
-    .data(data)
+    .data(d => d.gg)
     .enter()
     .append('g')
-    .attr('transform', (d, i) => {
+    .attr('transform', function(d, i) {
+        var dt = d3.select(this.parentNode).datum()
+        console.log(dt)
         var y = currenty
         currenty += d.arr.length*21 + 10
         return `translate(0, ${y})`
@@ -32,6 +38,10 @@ groups.selectAll('rect')
     .enter()
     .append('rect')
     .attr('width', 100)
-    .attr('height', 20)
+    .attr('height', function(){
+        var dt = d3.select(this.parentNode).datum()
+        console.log(dt)
+        return 20
+    })
     .attr('y', (d, i) => i*21)
     

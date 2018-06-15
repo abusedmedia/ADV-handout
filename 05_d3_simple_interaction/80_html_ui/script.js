@@ -1,19 +1,20 @@
 // populate a selector and listen for change
-var data_selector = [{id:1, label:"Label 1", color:'#000'},
-					 {id:2, label:"Label 2", color:'#f00'},
-					 {id:3, label:"Label 3", color:'#0f0'},
-					 {id:4, label:"Label 4", color:'#00f'},
-					 {id:5, label:"Label 5", color:'#555'}]
+var data_selector = [{id: 1, label: 'Label 1', color: '#000'},
+					 {id: 2, label: 'Label 2', color: '#f00'},
+					 {id: 3, label: 'Label 3', color: '#0f0'},
+					 {id: 4, label: 'Label 4', color: '#00f'},
+					 {id: 5, label: 'Label 5', color: '#555'}]
 
 d3.select('body')
 		.select('#selector')
-		.on('change', () => {
+		.on('change', function () {
 			// trig some action here
-			console.log(this.value);
+  console.log(this.value)
+			// or d3.select(this).property('value')
 
 			// function defined below
-			changeCircleColor(this.value);
-		})
+  changeCircleColor(this.value)
+})
 		.selectAll('option')
 		.data(data_selector)
 		.enter()
@@ -21,48 +22,36 @@ d3.select('body')
 		.attr('value', (d) => d.color)
 		.text((d) => d.label)
 
-
-
-
 // listen for button click, will add a new element
 d3.select('body')
 	.select('#btn')
 	.on('click', () => {
 		// trig some action here
-		console.log('clicked me');
+  console.log('clicked me')
 
 		// function defined below
-		changeCircleRadius()
-	})
-	
+  changeCircleRadius()
+})
 
+var w = 600
+var h = 600
 
-
-
-
-
-var w = 600;
-var h = 600;
-		
 // select the svg container
 var svg = d3.select('svg')
 			.attr('width', w)
 			.attr('height', h)
 
-
 var myCircle = svg.append('circle')
 				.attr('r', 50)
-				.attr('cx', w/2)
-				.attr('cy', h/2)
+				.attr('cx', w / 2)
+				.attr('cy', h / 2)
 
-
-function changeCircleColor(val){
-	myCircle.transition()
+function changeCircleColor (val) {
+  myCircle.transition()
 		.style('fill', val)
 }
 
-
-function changeCircleRadius(){
-	myCircle.transition()
-		.attr('r', 20+Math.random()*50)
+function changeCircleRadius () {
+  myCircle.transition()
+		.attr('r', 20 + Math.random() * 50)
 }

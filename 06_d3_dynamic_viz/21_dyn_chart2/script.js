@@ -1,5 +1,6 @@
-var data = d3.range(100).map((d) => {value:Math.random()})
-
+var data = d3.range(100).map((d) => {
+  return { value: Math.random() }
+})
 
 var lineGen = d3.line()
         .x((d, i) => i * 20)
@@ -10,13 +11,14 @@ d3.select('svg')
     .append('path')
     .style('stroke-width', 1)
 
-function updateViz(){
+function updateViz () {
+  var l = Math.random() * 50
 
-    var l = Math.random()*50;
+  var data = d3.range(l).map((d) => {
+    return { value: Math.random() }
+  })
 
-    var data = d3.range(l).map((d) => {value:Math.random()})
-
-    d3.select('path')
+  d3.select('path')
         .transition()
         .duration(1000)
         .ease(d3.easeBounceInOut)

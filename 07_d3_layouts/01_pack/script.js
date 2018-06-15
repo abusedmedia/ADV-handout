@@ -6,7 +6,9 @@ var h = 600
 var svg = d3.select('svg')
 
 // create the dataset
-var data = d3.range(50).map((d) => { amount:2 + Math.random() * 20 })
+var data = d3.range(50).map((d) => {
+  return { amount: 2 + Math.random() * 20 }
+})
 
 // create the data structure
 var structure = d3.hierarchy({root: 'root', children: data})
