@@ -4,8 +4,8 @@ var h = 600
 
 // select the svg container
 var svg = d3.select('svg')
-            .attr('width', w)
-            .attr('height', h)
+  .attr('width', w)
+  .attr('height', h)
 
 // create the projection system
 // mercator
@@ -13,21 +13,21 @@ var svg = d3.select('svg')
 // stereographic
 // equirectangular
 var proj = d3.geoAlbersUsa()
-            .scale(800)
-            .translate([w / 2, h / 2])
+  .scale(800)
+  .translate([w / 2, h / 2])
 
 // create the path generator
 // using the projection system
 var path = d3.geoPath()
-            .projection(proj)
+  .projection(proj)
 
 // load the geoJSON US description file and display it
 d3.json('../../datasets/geojson/us.geo.json').then(map => {
-    // http://www.geojson.org/geojson-spec.html
+  // http://www.geojson.org/geojson-spec.html
 
   console.log(map)
 
-    /*
+  /*
     In this case the object returned is something like:
     {
         type: 'FeatureCollection',
@@ -53,14 +53,12 @@ d3.json('../../datasets/geojson/us.geo.json').then(map => {
   var scheme = d3.schemeCategory10
   var cols = d3.scaleOrdinal(scheme)
 
-    // this block create separate path element for each feature in collection
+  // this block create separate path element for each feature in collection
   svg.selectAll('.country')
-        .data(map.features)
-        .enter()
-        .append('path')
-        .attr('class', 'country')
-        .attr('d', path)
-        .style('fill', function (d, i) {
-          return cols(i)
-        })
+    .data(map.features)
+    .enter()
+    .append('path')
+    .attr('class', 'country')
+    .attr('d', path)
+    .style('fill', (d, i) => cols(i))
 })

@@ -1,8 +1,8 @@
 d3.csv('dataset.csv').then(data => {
   var byAge = d3.nest()
-        .key((d) => d.Age)
-        .sortKeys(d3.ascending)
-        .entries(data)
+    .key((d) => d.Age)
+    .sortKeys(d3.ascending)
+    .entries(data)
 
   var min = d3.min(byAge, (d) => d3.min(d.values, (c) => c.Age))
 

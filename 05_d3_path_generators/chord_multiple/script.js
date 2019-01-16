@@ -3,11 +3,11 @@ var h = 600
 
 // select the svg container
 var svg = d3.select('svg')
-            .attr('width', w)
-            .attr('height', h)
+  .attr('width', w)
+  .attr('height', h)
 
 var crd = d3.ribbon()
-        .radius(150)
+  .radius(150)
 
 var data = []
 
@@ -32,11 +32,11 @@ for (var i = 0; i < 10; ++i) {
 var cols = d3.scaleOrdinal(d3.schemeCategory10)
 
 var g = svg.append('g')
-    .attr('transform', 'translate(300,300)')
-    .selectAll('path')
-    .data(data, (d) => d.key)
-    .enter()
-    .append('path')
-    .attr('d', crd)
-    .style('fill', (d, i) => cols(i))
-    .style('stroke', 'none')
+  .attr('transform', 'translate(300,300)')
+  .selectAll('path')
+  .data(data, (d) => d.key)
+  .enter()
+  .append('path')
+  .attr('d', crd)
+  .style('fill', (d, i) => cols(i))
+  .style('stroke', 'none')

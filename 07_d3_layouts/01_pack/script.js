@@ -11,15 +11,15 @@ var data = d3.range(50).map((d) => {
 })
 
 // create the data structure
-var structure = d3.hierarchy({root: 'root', children: data})
-    // .sort(null) // by default it order the set by the specified value
-    .sum((d) => d.amount)
+var structure = d3.hierarchy({ root: 'root', children: data })
+// .sort(null) // by default it order the set by the specified value
+  .sum((d) => d.amount)
 
 // create the pack layout
 var pack = d3.pack()
-            .size([w, h])
-            .padding(1.5)
-            // .radius(() => 10) // to use a fixed radius
+  .size([w, h])
+  .padding(1.5)
+// .radius(() => 10) // to use a fixed radius
 
 // convert the structure with the layout
 var nodes = pack(structure)
@@ -27,17 +27,17 @@ console.log(nodes)
 
 // reference the selection to a variable
 svg.selectAll('circle')
-    .data(nodes.children)
-    .enter()
-    .append('circle')
-    .style('fill', 'skyblue')
+  .data(nodes.children)
+  .enter()
+  .append('circle')
+  .style('fill', 'skyblue')
 
-    .attr('cx', (d) => d.x)
-     .attr('cy', (d) => d.y)
+  .attr('cx', (d) => d.x)
+  .attr('cy', (d) => d.y)
 
-    .attr('r', 0) // initial radius
-    .transition()
-    .delay((d, i) => i * 50)
+  .attr('r', 0) // initial radius
+  .transition()
+  .delay((d, i) => i * 50)
 
-    // final radius
-    .attr('r', (d) => d.r)
+// final radius
+  .attr('r', (d) => d.r)

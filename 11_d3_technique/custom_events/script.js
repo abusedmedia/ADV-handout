@@ -11,8 +11,8 @@ var dispatcher = d3.dispatch('my_event')
 setTimeout(go, 2000)
 
 function go () {
-    // send the message with some arguments
-  dispatcher.call('my_event', {context: 'object'}, {key: 'arguments'})
+  // send the message with some arguments
+  dispatcher.call('my_event', { context: 'object' }, { key: 'arguments' })
 }
 
 // if you listen the same event more than once, you must use a namespace (.one, .whatever)

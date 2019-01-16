@@ -2,7 +2,7 @@
 var svg = d3.select('svg')
 
 var data = d3.range(12).map((d) => {
-  return {value: Math.random() * 3 - 1}
+  return { value: Math.random() * 3 - 1 }
 })
 
 var scaler = d3.scaleLinear()
@@ -10,7 +10,7 @@ var scaler = d3.scaleLinear()
   .range([-15, 15])
 
 var r = 120
-var pad = 60
+var pad = 80
 
 var pathGen = d3.area()
   .x1((d, i) => {

@@ -9,20 +9,20 @@ var svg = d3.select('svg')
 // gnomonic
 // equirectangular
 var proj = d3.geoMercator()
-			.scale((600 + 1) / 2 / Math.PI)
-			.translate([600 / 2, 600 / 2])
+  .scale((600 + 1) / 2 / Math.PI)
+  .translate([600 / 2, 600 / 2])
 
 // create the path generator
 // using the projection system
 var path = d3.geoPath()
-			.projection(proj)
+  .projection(proj)
 
 // the feature Point
-var point = {type: 'Point', coordinates: [0, 0]}
+var point = { type: 'Point', coordinates: [0, 0] }
 
 svg.append('path')
-	.datum(point)
-	.attr('d', path)
-	.style('fill', 'none')
-	.style('stroke', '#f00')
-	.style('stroke-width', 2)
+  .datum(point)
+  .attr('d', path)
+  .style('fill', 'none')
+  .style('stroke', '#f00')
+  .style('stroke-width', 2)
