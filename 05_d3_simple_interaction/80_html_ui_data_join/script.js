@@ -1,20 +1,22 @@
 
 // the dataset
-var data_selector = [{ id: 1, label: 'Label 1', color: '#000', radius: 20 },
-					 { id: 2, label: 'Label 2', color: '#f00', radius: 30 },
-					 { id: 3, label: 'Label 3', color: '#0f0', radius: 40 },
-					 { id: 4, label: 'Label 4', color: '#00f', radius: 50 },
-					 { id: 5, label: 'Label 5', color: '#555', radius: 60 }]
+var data = [
+  { id: 1, label: 'Label 1', color: '#000', radius: 20 },
+  { id: 2, label: 'Label 2', color: '#f00', radius: 30 },
+  { id: 3, label: 'Label 3', color: '#0f0', radius: 40 },
+  { id: 4, label: 'Label 4', color: '#00f', radius: 50 },
+  { id: 5, label: 'Label 5', color: '#555', radius: 60 }
+]
 
 // create buttons based on the dataset
 d3.select('body')
   .selectAll('input')
-  .data(data_selector)
+  .data(data)
   .enter()
   .append('input')
   .attr('type', 'button')
   .attr('value', (d) => d.label)
-  .on('click', (d) => {
+  .on('click', (e, d) => {
     // note I'm using 'd' instead 'this' used in previous example
     changeStatus(d)
   })

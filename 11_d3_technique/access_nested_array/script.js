@@ -1,10 +1,15 @@
 d3.csv('dataset.csv').then(data => {
   var svg = d3.select('svg')
 
-  var dt = d3.nest()
-    .key((d) => d.Country)
-    .key((d) => d.Weight)
-    .entries(data)
+  var dtMap = d3.group(data,
+    d => d.Country,
+    d => d.Weight)
+
+  var dt = Array.from(dtMap, ([key, value]) => ({ key, value }))
+  dt.forEach(d => {
+    d.value = Array.from(d.value, ([key, value]) => ({ key, value }))
+  })
+  console.log(dt)
 
   var groups = svg.selectAll('g')
     .data(dt)
@@ -13,7 +18,7 @@ d3.csv('dataset.csv').then(data => {
     .attr('transform', 'translate(300,300)')
 
   groups.selectAll('g')
-    .data((d) => d.values)
+    .data((d) => d.value)
     .enter()
     .append('g')
     .call(function (selection) {

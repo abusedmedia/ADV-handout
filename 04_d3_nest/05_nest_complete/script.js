@@ -2,18 +2,18 @@ d3.csv('dataset.csv').then(data => {
   var svg = d3.select('svg')
 
   // creating 3 level of nesting
-  var dt = d3.nest()
-    .key((d) => d.Country)
-    .key((d) => d.Age)
-    .rollup((d) => {
-      return {
-        num: d.length,
-        male: d3.sum(d, (c) => (c.Sex == 'M') ? 1 : 0),
-        female: d3.sum(d, (c) => (c.Sex == 'F') ? 1 : 0)
-      }
-    })
-    .entries(data)
+  var dtMap = d3.rollup(data,
+    d => ({
+      num: d.length,
+      male: d3.sum(d, (c) => (c.Sex == 'M') ? 1 : 0),
+      female: d3.sum(d, (c) => (c.Sex == 'F') ? 1 : 0)
+    }), d => d.Country, d => d.Age)
 
+  var dt = Array.from(dtMap, ([key, value]) => ({ key, value }))
+
+  dt.forEach(d => {
+    d.value = Array.from(d.value, ([key, value]) => ({ key, value }))
+  })
   console.log(dt)
 
   // first level
@@ -34,7 +34,7 @@ d3.csv('dataset.csv').then(data => {
 
   // second level
   var ages = groups.selectAll('g')
-    .data((d) => d.values)
+    .data((d) => d.value)
     .enter()
     .append('g')
     .attr('transform', (d, i) => `translate(${i * 20}, 0)`)

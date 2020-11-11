@@ -48,7 +48,8 @@ entered.append('text')
   .attr('opacity', 0)
 
 // interaction
-entered.on('mouseover', function (d, i) {
+entered.on('mouseover', function (e, d) {
+  const i = objData.indexOf(d)
   d3.select(this)
     .select('rect')
     .transition()
@@ -64,7 +65,7 @@ entered.on('mouseover', function (d, i) {
     .ease(d3.easeExpInOut)
     .attr('opacity', 1)
 })
-  		.on('mouseout', function () {
+  .on('mouseout', function (e, d) {
     d3.select(this)
       .select('rect')
       .transition()

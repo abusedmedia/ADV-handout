@@ -33,7 +33,7 @@ d3.json('../../datasets/geojson/us.geo.json').then(map => {
 
   var centered
 
-  function clicked (d) {
+  function clicked (e, d) {
     var x, y, k
 
     if (d && centered !== d) {

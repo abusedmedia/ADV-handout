@@ -5,9 +5,9 @@ var sc = d3.scaleLinear()
 var format = d3.format('.1f')
 
 var axis = d3.axisRight(sc)
-  .ticks(5)
-  .tickSize(1)
-  .tickFormat(format)
+// .ticks(5)
+// .tickSize(1)
+// .tickFormat(format)
 
 d3.select('svg')
   .append('g')

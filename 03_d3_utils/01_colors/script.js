@@ -6,7 +6,7 @@ var scale = d3.scaleLinear()
   .domain([0, data.length - 1])
   .range([0, 100])
 
-var colorsa = d3.scaleOrdinal(d3.schemeCategory20)
+var colorsa = d3.scaleOrdinal(d3.schemeCategory10)
 
 svg.append('g')
   .selectAll('rect')
